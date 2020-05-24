@@ -15,15 +15,19 @@ const forecast = 	(latitude, longitude, callback) => {
 			callback(body.error.info, undefined);
 		} else {
 			const {
+				observation_time,
 				temperature,
 				weather_descriptions,
+				humidity,
 				feelslike
 			} = body.current;
 
 			const message =
-				`${weather_descriptions}.\n`
+				`The weather is ${weather_descriptions}.\n`
 				+ `It is currently ${temperature} degrees out.\n`
-				+ `It feels like ${feelslike} degrees out.`;
+				+ `It feels like ${feelslike} degrees out.\n`
+				+ `The humidity is ${humidity}.\n`
+				+ `The observation time is ${observation_time}.\n`;
 
 			callback(undefined, message);
 		}
